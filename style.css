@@ -621,6 +621,49 @@ footer{
   footer{padding:26px 60px}
 }
 
+/* ── Avatar card ─────────────────────────────── */
+.contact-av-wrap {
+  margin-top: 40px;
+}
+.av-card {
+  display: inline-flex;
+  flex-direction: column;
+  background: #1a1a18;
+  border: 1px solid #2a2a28;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.4);
+  width: 160px;
+}
+.av-card-img {
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+.av-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.av-card-body {
+  padding: 12px 14px 14px;
+  border-top: 1px solid #222221;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #1a1a18;
+}
+.av-card-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #e8e8e5;
+  letter-spacing: -.01em;
+}
+.av-card-role {
+  font-size: 11px;
+  color: #666662;
+}
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE — 1440px+
 ═══════════════════════════════════════════════════════════════ */
