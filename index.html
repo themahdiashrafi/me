@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="description" content="Mahdi Ashrafi — Software Engineer. Backend infrastructure, agentic AI workflows, financial data systems."/>
+<meta name="theme-color" content="#0a0a09"/>
+<title>Mahdi Ashrafi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mnav">
+  <a href="#" class="nav-logo">
+    <img src="assets/avatar.jpg" class="nav-av" alt=""/>
+    Mahdi Ashrafi
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#build">What I build</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="mailto:hello@mahdiashrafi.com" class="nav-cta">Get in touch →</a>
+  <div class="burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mob-menu" id="mmenu">
+  <a href="#about"      onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#build"      onclick="closeMenu()">What I build</a>
+  <a href="#contact"    onclick="closeMenu()">Contact</a>
+  <a href="mailto:hello@mahdiashrafi.com" onclick="closeMenu()">Get in touch →</a>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="home">
+  <div class="hero-wall"></div>
+  <canvas id="dc-hero" class="dot-canvas"></canvas>
+
+  <div class="hero-content sec-inner">
+    <div class="hero-av-row">
+      <div class="hero-av-ring">
+        <img src="assets/avatar.jpg" alt="Mahdi Ashrafi"/>
+      </div>
+      <div class="hero-av-meta">
+        <span class="hero-av-name">Mahdi Ashrafi</span>
+        <span class="hero-av-role">Software Engineer</span>
+      </div>
+    </div>
+
+    <div class="hero-badge"><span class="hero-dot"></span>Building…</div>
+    <h1>Engineer.<br/><em>Nerd at the core.</em></h1>
+    <p class="hero-sub">Drawn to multi-layered systems with complex architecture. I build scalable backend infrastructure, agentic AI workflows, and financial modeling tools — with a deep pull toward automation, aerospace, and anything that demands precision over everything.</p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-p">See my work →</a>
+      <a href="#contact"    class="btn-s">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat fu">
+      <span class="stat-n">7+</span>
+      <span class="stat-l">Years in producing systems</span>
+    </div>
+    <div class="hero-stat fu">
+      <span class="stat-n">92%</span>
+      <span class="stat-l">LLM extraction accuracy</span>
+    </div>
+    <div class="hero-stat fu">
+      <span class="stat-n">83%</span>
+      <span class="stat-l">Processing time cut</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section class="about-sec" id="about">
+  <canvas id="dc-about" class="dot-canvas"></canvas>
+  <img src="assets/gear.png" class="about-gear-wm" aria-hidden="true"/>
+  <div class="about-inner sec-inner">
+    <div class="about-left">
+      <div class="eyebrow">About</div>
+      <h2 class="stitle">Lifelong Tech Nerd.<br/><em>Aerospace Geek.</em></h2>
+      <p class="sbody">I've always been drawn to systems that can't afford to be wrong — NASA, JP Morgan, Terafab. Complexity that demands precision, architecture that has to hold under real pressure.</p>
+      <p class="sbody" style="margin-top:12px">My work sits at the intersection of backend engineering and deep financial domain knowledge. Production-grade APIs, data pipelines, AI-integrated systems — where the logic has to be airtight.</p>
+      <div class="tag-row">
+        <span class="tag">Django</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Redis</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Python</span>
+        <span class="tag">Agentic Workflows</span>
+        <span class="tag">System Design</span>
+      </div>
+    </div>
+    <div class="insight-cards">
+      <div class="icard fu">
+        <div class="icard-n">01</div>
+        <div class="icard-lbl">Engineering philosophy</div>
+        <div class="icard-txt">There's only one correct answer. The system either holds or it doesn't — subjectivity doesn't get a seat at the table. Clean architecture, honest trade-offs, no cargo-culting.</div>
+      </div>
+      <div class="icard fu">
+        <div class="icard-n">02</div>
+        <div class="icard-lbl">Domain depth</div>
+        <div class="icard-txt">Years embedded inside financial markets — institutional orderflow, derivatives, liquidity dynamics, macroeconomic behavior. That background now directly shapes how I scope, model, and build fintech systems.</div>
+      </div>
+      <div class="icard fu">
+        <div class="icard-n">03</div>
+        <div class="icard-lbl">Direction</div>
+        <div class="icard-txt">Deepening in advanced enterprise-grade programming. Long-term pull toward systems-level engineering and aerospace-adjacent software — where correctness isn't negotiable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ EXPERIENCE ═══════ -->
+<section class="exp-sec" id="experience">
+  <div class="sec-inner">
+    <div class="exp-header">
+      <div>
+        <div class="eyebrow">Experience</div>
+        <h2 class="stitle">Where I've<br/><em>built things.</em></h2>
+      </div>
+      <p class="sbody" style="padding-top:4px">From automated financial pipelines to AI-integrated data extraction — production systems across fintech, hedge funds, and prop trading infrastructure.</p>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item fu">
+        <div class="tl-top">
+          <div class="tl-dot"></div>
+          <span class="tl-date">Jan 2025 – Present</span>
+        </div>
+        <div class="tl-card">
+          <div class="tl-badge">Current</div>
+          <div class="tl-role">Software Engineer</div>
+          <div class="tl-co">Wallex · Part-time</div>
+          <div class="tl-desc">Architected an automated financial statement parsing pipeline — 70% reduction in manual processing time. Integrated LLM-based extraction (OpenAI API) achieving ~92% accuracy. Built risk assessment scoring using NumPy and financial ratios.</div>
+        </div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-top">
+          <div class="tl-dot"></div>
+          <span class="tl-date">Aug 2024 – Present</span>
+        </div>
+        <div class="tl-card">
+          <div class="tl-badge">Current</div>
+          <div class="tl-role">Founder · Derivatives Analyst &amp; Mentor</div>
+          <div class="tl-co">Kaizeneum · Part-time</div>
+          <div class="tl-desc">Bootstrapped a premium trading education startup to 200+ members across 15+ countries at 3.7% monthly live trading revenue. Engineered a proprietary institutional orderflow framework with ~67% win rate over two years. Mentored 10+ students to 7-figure funded accounts across US, UK, and Netherlands prop firms.</div>
+        </div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-top">
+          <div class="tl-dot"></div>
+          <span class="tl-date">Nov 2024 – Oct 2025</span>
+        </div>
+        <div class="tl-card">
+          <div class="tl-role">Investment Analyst</div>
+          <div class="tl-co">Wallex · Crowdfunding</div>
+          <div class="tl-desc">Evaluated financial statements, built feasibility models for 15+ companies, and developed Python-based evaluation tools alongside the R&amp;D team. Translated economic models into engineering specs.</div>
+        </div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-top">
+          <div class="tl-dot"></div>
+          <span class="tl-date">Aug 2024 – Aug 2025</span>
+        </div>
+        <div class="tl-card">
+          <div class="tl-role">Senior Derivatives Trader</div>
+          <div class="tl-co">Blue Guardian · Remote</div>
+          <div class="tl-desc">Institutional orderflow, liquidity dynamics, macroeconomic behavior. Managed trading teams, capital allocation, high-precision execution. Collaborated with engineering on workflow automation.</div>
+        </div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-top">
+          <div class="tl-dot"></div>
+          <span class="tl-date">May 2022 – Oct 2024</span>
+        </div>
+        <div class="tl-card">
+          <div class="tl-role">Algorithmic Portfolio Manager</div>
+          <div class="tl-co">WeTrust Group · Amsterdam</div>
+          <div class="tl-desc">Portfolio Manager at WeTrust Hedge Fund. Derivatives analyst on Beursplein 5 (Euronext) under the Black Edge allocation program. VAR-based scenario modeling and junior trader mentorship.</div>
+        </div>
+      </div>
+
+      <div class="tl-item fu">
+        <div class="tl-top">
+          <div class="tl-dot"></div>
+          <span class="tl-date">Jul 2021 – Jun 2023</span>
+        </div>
+        <div class="tl-card">
+          <div class="tl-role">Derivatives Trader / Capital Manager</div>
+          <div class="tl-co">FTMO &amp; Propiy · Remote</div>
+          <div class="tl-desc">Managed six-figure funded accounts. Derivatives, liquidity management, CFD contracts, footprint analysis. FTMO and Propiy certified.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WHAT I BUILD ═══════ -->
+<section class="build-sec" id="build">
+  <canvas id="dc-build" class="dot-canvas"></canvas>
+  <div class="build-header sec-inner">
+    <div class="eyebrow build-eyebrow">What I build</div>
+    <h2 class="stitle build-title">Systems designed<br/><em>to hold.</em></h2>
+    <p class="sbody build-body">Not demos — production systems. Each layer considered, each dependency justified. I think in architecture before I think in code.</p>
+  </div>
+  <div class="bento sec-inner">
+    <div class="bento-cell bento-wide fu">
+      <div class="bento-ico"><img src="assets/gear.png" aria-hidden="true"/></div>
+      <div class="bento-name">API architecture &amp; backend infrastructure</div>
+      <div class="bento-desc">Django, FastAPI, REST, async — built for scale and longevity. From routing to middleware to auth, every layer deliberate. Designed to hold under prod load, not just pass a demo.</div>
+      <div class="bento-tag">Core</div>
+    </div>
+    <div class="bento-cell fu">
+      <div class="bento-ico"><img src="assets/gear.png" aria-hidden="true"/></div>
+      <div class="bento-name">Financial Modeling &amp; Data Pipelines</div>
+      <div class="bento-desc">Parsing, extraction, validation, ratio modeling — production-grade fintech infrastructure with real accuracy targets.</div>
+      <div class="bento-tag">Fintech</div>
+    </div>
+    <div class="bento-cell fu">
+      <div class="bento-ico"><img src="assets/gear.png" aria-hidden="true"/></div>
+      <div class="bento-name">AI-driven Agentic Workflows</div>
+      <div class="bento-desc">LLM integration, intelligent document processing, automation pipelines that replace human toil at scale.</div>
+      <div class="bento-tag">AI</div>
+    </div>
+    <div class="bento-rings fu">
+      <div class="gear-rings-wrap">
+        <div class="gr gr1"></div>
+        <div class="gr gr2"></div>
+        <div class="gr gr3"></div>
+        <img src="assets/gear.png" class="gr-img" aria-hidden="true"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section class="contact-sec" id="contact">
+  <canvas id="dc-contact" class="dot-canvas"></canvas>
+  <img src="assets/gear.png" class="contact-gear-wm" aria-hidden="true"/>
+  <div class="contact-inner sec-inner">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2 class="stitle">Let's build<br/><em>something real.</em></h2>
+      <p class="sbody">Open to backend engineering roles, technical collaborations, and conversations with people who care about the architecture, not just the delivery.</p>
+    </div>
+    <div class="clinks">
+      <a href="https://www.linkedin.com/in/themahdiashrafi/" class="clink fu" target="_blank" rel="noopener">
+        <div class="clink-l"><span class="clink-name">LinkedIn</span><span class="clink-handle">Career</span></div>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://kaizeneum.github.io/kaizen" class="clink fu" target="_blank" rel="noopener">
+        <div class="clink-l"><span class="clink-name">Kaizeneum</span><span class="clink-handle">Mentoring</span></div>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://x.com/themahdiashrafi" class="clink fu" target="_blank" rel="noopener">
+        <div class="clink-l"><span class="clink-name">𝕏 / Twitter</span><span class="clink-handle">Digital Diary</span></div>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://www.instagram.com/themahdiashrafi" class="clink fu" target="_blank" rel="noopener">
+        <div class="clink-l"><span class="clink-name">Instagram</span><span class="clink-handle">themahdiashrafi</span></div>
+        <span class="clink-arr">↗</span>
+      </a>
+      <a href="https://github.com/themahdiashrafi" class="clink fu" target="_blank" rel="noopener">
+        <div class="clink-l"><span class="clink-name">GitHub</span><span class="clink-handle">Repositories</span></div>
+        <span class="clink-arr">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="ftxt">© 2026 Mahdi Ashrafi</span>
+  <img src="assets/avatar.jpg" class="fav" alt=""/>
+  <span class="ftxt">Wandering head to many tails.</span>
+</footer>
+
+<script src="main.js"></script>
+
+</body>
+</html>
