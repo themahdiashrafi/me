@@ -22,8 +22,8 @@ window.addEventListener('scroll',()=>{
   document.getElementById('mnav').classList.toggle('scrolled',window.scrollY>8);
 },{passive:true});
 
-/* ──  matrix canvas ───────────────────── */
-function draws(id,cfg){
+/* ── Dot matrix canvas ───────────────────── */
+function drawDots(id,cfg){
   const c=document.getElementById(id);
   if(!c)return;
   const W=c.parentElement.offsetWidth;
