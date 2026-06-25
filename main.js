@@ -46,9 +46,9 @@ function draws(id,cfg){
   }
 }
 function allDots(){
-  drawDots('dc-hero', {sp:14,r:.9,dark:true});
-  drawDots('dc-about',{sp:20,r:.9,dark:true});
-  drawDots('dc-build',{sp:16,r:.9,dark:true});
+  drawDots('dc-hero', {sp:20,r:.9,dark:true});
+  drawDots('dc-about',{sp:22,r:.9,dark:true});
+  drawDots('dc-build',{sp:22,r:.9,dark:true});
   drawDots('dc-contact',{sp:22,r:.9,dark:true});
 }
 window.addEventListener('load',allDots);
