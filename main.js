@@ -22,8 +22,8 @@ window.addEventListener('scroll',()=>{
   document.getElementById('mnav').classList.toggle('scrolled',window.scrollY>8);
 },{passive:true});
 
-/* ── Dot matrix canvas ───────────────────── */
-function drawDots(id,cfg){
+/* ──  matrix canvas ───────────────────── */
+function draws(id,cfg){
   const c=document.getElementById(id);
   if(!c)return;
   const W=c.parentElement.offsetWidth;
@@ -46,9 +46,9 @@ function drawDots(id,cfg){
   }
 }
 function allDots(){
-  drawDots('dc-hero', {sp:20,r:.9,dark:true});
-  drawDots('dc-about',{sp:22,r:.9,dark:true});
-  drawDots('dc-build',{sp:22,r:.9,dark:true});
+  drawDots('dc-hero', {sp:15,r:.7,dark:true});
+  drawDots('dc-about',{sp:16,r:.9,dark:true});
+  drawDots('dc-build',{sp:16,r:.6,dark:true});
   drawDots('dc-contact',{sp:22,r:.9,dark:true});
 }
 window.addEventListener('load',allDots);
