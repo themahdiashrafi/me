@@ -164,6 +164,13 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   background:var(--bg);
   border-bottom:1px solid var(--border);
 }
+/* Amber accent rule — top edge signature */
+.hero::after{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 0%,#b8860b 30%,#d4a017 50%,#b8860b 70%,transparent 100%);
+  opacity:.35;z-index:10;
+}
 
 /* Wallpaper — right-side accent, fades into dot grid */
 .hero-wall{
@@ -243,6 +250,13 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
 .hero-av-name{font-size:13px;font-weight:500;color:var(--text)}
 .hero-av-role{font-size:11px;color:var(--text3)}
 
+/* Coordinate label */
+.hero-coord{
+  font-size:10px;font-family:monospace;
+  color:var(--text4);letter-spacing:.12em;
+  margin-bottom:18px;
+}
+
 /* Badge */
 .hero-badge{
   display:inline-flex;align-items:center;gap:7px;
@@ -283,13 +297,12 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   margin-top:32px;
 }
 .hero-stat{
-  padding:20px 0;
+  padding:20px 0 20px 16px;
   display:flex;flex-direction:column;gap:4px;
   border-right:1px solid var(--border);
 }
 .hero-stat:last-child{border-right:none}
 .hero-stat:first-child{padding-left:0}
-.hero-stat{padding-left:16px}
 .stat-n{
   font-family:var(--serif);font-size:28px;
   color:var(--text);line-height:1;letter-spacing:-.02em;
@@ -305,17 +318,26 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   border-bottom:1px solid var(--border);
   padding:72px 20px;
 }
-/* subtle horizontal rule lines as texture */
+/* diagonal hatching texture — more industrial than plain lines */
 .about-sec::before{
   content:'';position:absolute;
   inset:0;
-  background:repeating-linear-gradient(
-    0deg,
+  background-image:repeating-linear-gradient(
+    -45deg,
     transparent,
-    transparent 39px,
-    var(--border) 40px
+    transparent 18px,
+    rgba(255,255,255,.012) 18px,
+    rgba(255,255,255,.012) 19px
   );
-  opacity:.18;z-index:0;pointer-events:none;
+  opacity:1;z-index:0;pointer-events:none;
+}
+/* Right-side amber glow — unique to About */
+.about-sec::after{
+  content:'';position:absolute;
+  top:10%;right:-80px;
+  width:320px;height:320px;
+  background:radial-gradient(circle,rgba(180,120,20,.06) 0%,transparent 70%);
+  z-index:0;pointer-events:none;
 }
 .about-gear-wm{
   position:absolute;top:-8%;right:-6%;
@@ -343,23 +365,25 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   background:var(--bg3);
   border:1px solid var(--border);
   border-radius:var(--r10);
-  padding:20px 18px;
+  padding:20px 18px 20px 22px;
   position:relative;overflow:hidden;
   transition:border-color .2s,background .2s;
 }
 .icard::before{
   content:'';position:absolute;
-  left:0;top:0;bottom:0;width:2px;
+  left:0;top:0;bottom:0;width:3px;
   background:var(--border3);
-  transition:background .2s;
+  transition:background .3s;
 }
 .icard:hover{background:var(--bg4);border-color:var(--border2)}
-.icard:hover::before{background:var(--acc2)}
+.icard:hover::before{background:linear-gradient(to bottom,#b8860b,#8a6010)}
 .icard-n{
-  font-family:var(--serif);font-size:32px;
+  font-family:var(--serif);font-size:28px;
   color:var(--border2);line-height:1;
   margin-bottom:8px;
+  transition:color .2s;
 }
+.icard:hover .icard-n{color:var(--border3)}
 .icard-lbl{
   font-size:10px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--text4);margin-bottom:7px;
@@ -375,7 +399,20 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   border-bottom:1px solid var(--border);
   padding:72px 20px;
 }
-.exp-header{margin-bottom:40px}
+/* Vertical stripe texture — unique to Exp */
+.exp-sec::before{
+  content:'';position:absolute;
+  inset:0;z-index:0;
+  background-image:repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 79px,
+    rgba(255,255,255,.015) 79px,
+    rgba(255,255,255,.015) 80px
+  );
+  pointer-events:none;
+}
+.exp-header{margin-bottom:40px;position:relative;z-index:1}
 
 /* Timeline */
 .timeline{position:relative;padding-left:24px}
@@ -410,8 +447,26 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   background:var(--bg2);border:1px solid var(--border);
   border-radius:var(--r10);padding:16px 18px;
   transition:border-color .2s,background .2s;
+  position:relative;overflow:hidden;
 }
+/* scan-line that sweeps in on hover */
+.tl-card::after{
+  content:'';position:absolute;
+  top:0;left:-100%;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,160,23,.3),transparent);
+  transition:left .4s ease;
+}
+.tl-item:hover .tl-card::after{left:100%}
 .tl-item:hover .tl-card{border-color:var(--border2);background:var(--bg3)}
+/* Company monogram — top right of card */
+.tl-mono{
+  position:absolute;top:14px;right:14px;
+  font-family:var(--serif);font-size:22px;font-style:italic;
+  color:var(--border);line-height:1;
+  pointer-events:none;
+  transition:color .2s;
+}
+.tl-item:hover .tl-mono{color:var(--border2)}
 .tl-badge{
   display:inline-block;font-size:9px;font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;
@@ -455,16 +510,28 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   background:rgba(14,14,13,.9);
   border:1px solid var(--border);
   border-radius:var(--r10);
-  padding:22px 20px;
+  padding:24px 20px;
   position:relative;overflow:hidden;
-  transition:border-color .2s,background .2s;
+  transition:border-color .25s,background .25s,box-shadow .25s;
 }
-.bento-cell:hover{border-color:var(--border2);background:rgba(20,20,19,.95)}
+.bento-cell:hover{
+  border-color:var(--border2);
+  background:rgba(20,20,19,.95);
+  box-shadow:0 0 0 1px rgba(180,120,20,.08), 0 8px 32px rgba(0,0,0,.4);
+}
+.bento-wide{
+  background:rgba(10,10,9,.97);
+  border-color:var(--border2);
+}
+.bento-wide:hover{
+  border-color:rgba(180,120,20,.3);
+  box-shadow:0 0 0 1px rgba(180,120,20,.12), 0 0 40px rgba(180,120,20,.04), 0 12px 40px rgba(0,0,0,.5);
+}
 .bento-cell::after{
   content:'';position:absolute;
   top:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,var(--border2),transparent);
-  opacity:0;transition:opacity .2s;
+  opacity:0;transition:opacity .25s;
 }
 .bento-cell:hover::after{opacity:1}
 .bento-ico{
@@ -494,6 +561,26 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   border-bottom:1px solid var(--border);
   padding:72px 20px;
 }
+/* Large background monogram */
+.contact-sec::before{
+  content:'M';
+  position:absolute;
+  right:-2%;bottom:-8%;
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(200px,30vw,420px);
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.03);
+  line-height:1;z-index:0;
+  pointer-events:none;user-select:none;
+  letter-spacing:-.04em;
+}
+/* Amber bottom accent rule */
+.contact-sec::after{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 0%,#b8860b 30%,#d4a017 50%,#b8860b 70%,transparent 100%);
+  opacity:.2;z-index:1;
+}
 .contact-gear-wm{
   position:absolute;bottom:-10%;left:-8%;
   width:min(52vw,260px);opacity:.04;
@@ -512,12 +599,12 @@ nav.scrolled{box-shadow:0 2px 32px rgba(0,0,0,.5)}
   -webkit-tap-highlight-color:transparent;
 }
 .clink:hover{border-color:var(--border2);background:var(--bg4);transform:translateX(4px)}
+.clink:hover .clink-arr{color:rgba(180,120,20,.8)}
 .clink:active{transform:translateX(2px)}
 .clink-l{display:flex;flex-direction:column;gap:2px}
 .clink-name{font-size:14px;font-weight:500;color:var(--text)}
 .clink-handle{font-size:11px;color:var(--text3)}
 .clink-arr{font-size:15px;color:var(--text4);transition:color .2s}
-.clink:hover .clink-arr{color:var(--text2)}
 
 /* ═══════════════════════════════════════════════════════════════
    FOOTER
@@ -621,7 +708,7 @@ footer{
   .hero-content{
     flex:1;max-width:680px;
     justify-content:center;
-    padding:120px 0 80px;
+    padding:120px 0 140px;
   }
   .hero-av-row{margin-bottom:36px}
   .hero-av-ring{width:72px;height:72px}
@@ -645,8 +732,8 @@ footer{
   .timeline{padding-left:32px}
   .timeline::before{left:7px}
   .tl-item{display:grid;grid-template-columns:140px 1fr;gap:0;padding-bottom:20px}
-  .tl-top{flex-direction:column;align-items:center;margin-left:-32px;width:auto;gap:5px;padding-right:16px}
-  .tl-date{text-align:center;white-space:normal;font-size:10px}
+  .tl-top{flex-direction:column;align-items:center;margin-left:-32px;width:140px;gap:5px;padding-right:16px;padding-top:2px}
+  .tl-date{text-align:center;white-space:normal;font-size:10px;line-height:1.5}
   .tl-card{margin-top:-4px}
 
   .bento{
