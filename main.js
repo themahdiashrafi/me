@@ -23,7 +23,7 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 
 /* ── Dot matrix canvas ───────────────────── */
-function drawDots(id,cfg){
+function drawDots(id,cfg,t=0){
   const c=document.getElementById(id);
   if(!c)return;
   const W=c.parentElement.offsetWidth;
@@ -37,22 +37,26 @@ function drawDots(id,cfg){
       const fR=Math.min(1,x/(W*0.5));
       const fT=Math.min(1,y/(H*0.2));
       const fB=Math.max(0,1-(y/H-.65)*5);
-      const a=(dark?.2:.09)*fR*Math.min(fT,fB);
-      if(a<.004)continue;
+      const base=(dark?.2:.09)*fR*Math.min(fT,fB);
+      if(base<.004)continue;
+      const wave=Math.sin((x+y)/80-t)*0.5+0.5;
+      const a=base*(0.3+0.7*wave);
       ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
       ctx.fillStyle=dark?`rgba(255,255,255,${a})`:`rgba(200,200,195,${a})`;
       ctx.fill();
     }
   }
 }
-function allDots(){
-  drawDots('dc-hero', {sp:20,r:.9,dark:true});
-  drawDots('dc-about',{sp:22,r:.9,dark:true});
-  drawDots('dc-build',{sp:22,r:.9,dark:true});
-  drawDots('dc-contact',{sp:22,r:.9,dark:true});
+let dotTime=0;
+function animateDots(){
+  dotTime+=0.012;
+  drawDots('dc-hero',   {sp:20,r:.9,dark:true},dotTime);
+  drawDots('dc-about',  {sp:22,r:.9,dark:true},dotTime);
+  drawDots('dc-build',  {sp:22,r:.9,dark:true},dotTime);
+  drawDots('dc-contact',{sp:22,r:.9,dark:true},dotTime);
+  requestAnimationFrame(animateDots);
 }
-window.addEventListener('load',allDots);
-window.addEventListener('resize',allDots,{passive:true});
+window.addEventListener('load',animateDots);
 
 /* ── Parallax tilt — desktop only ────────── */
 const hero=document.querySelector('.hero');
