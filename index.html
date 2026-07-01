@@ -8,8 +8,58 @@
 <title>Mahdi Ashrafi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
+<style>
+/* ── bento terminal cell — scoped, does not touch style.css ── */
+.bento-term{
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(7,7,6,.95);
+  border:1px solid var(--border);
+  border-radius:var(--r10);
+  min-height:180px;
+  padding:16px;
+}
+.bt-phone{
+  width:108px;height:154px;
+  background:linear-gradient(180deg, var(--bg4), var(--bg3));
+  border:1px solid var(--border3);
+  border-radius:18px;
+  padding:5px;
+  position:relative;
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.bt-phone::before{
+  content:'';position:absolute;top:5px;left:50%;transform:translateX(-50%);
+  width:34px;height:8px;background:var(--bg);border-radius:5px;z-index:2;
+}
+.bt-screen{
+  width:100%;height:100%;background:var(--bg);
+  border-radius:13px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.bt-bar{
+  display:flex;align-items:center;gap:3px;
+  padding:10px 8px 5px;flex-shrink:0;
+}
+.bt-dot{width:3px;height:3px;border-radius:50%;border:1px solid var(--border2)}
+.bt-body{
+  flex:1;padding:2px 8px 8px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;
+  font-size:5.5px;line-height:1.9;color:var(--text2);
+  overflow:hidden;white-space:pre;
+}
+.bt-body .kw{color:#d4a017}
+.bt-body .cm{color:var(--text4);font-style:italic}
+.bt-cursor{
+  display:inline-block;width:2px;height:1em;
+  background:#d4a017;box-shadow:0 0 4px rgba(212,160,23,.7);
+  margin-left:1px;vertical-align:-1px;
+  animation:btCaret 1s step-end infinite;
+}
+@keyframes btCaret{0%,100%{opacity:1}50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.bt-cursor{animation:none}}
+</style>
 
 </head>
 <body>
@@ -253,12 +303,14 @@
       <div class="bento-desc">LLM integration, intelligent document processing, automation pipelines that replace human toil at scale.</div>
       <div class="bento-tag">AI</div>
     </div>
-    <div class="bento-rings fu">
-      <div class="gear-rings-wrap">
-        <div class="gr gr1"></div>
-        <div class="gr gr2"></div>
-        <div class="gr gr3"></div>
-        <img src="assets/gear.png" class="gr-img" aria-hidden="true"/>
+    <div class="bento-term fu">
+      <div class="bt-phone">
+        <div class="bt-screen">
+          <div class="bt-bar">
+            <span class="bt-dot"></span><span class="bt-dot"></span><span class="bt-dot"></span>
+          </div>
+          <div class="bt-body" id="btBody"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -319,6 +371,87 @@
 </footer>
 
 <script src="main.js"></script>
+
+<script>
+/* ── mini terminal, "What I build" bento cell — scoped, own IIFE ── */
+(function(){
+  var body = document.getElementById('btBody');
+  if(!body) return;
+
+  var SNIPPETS = [
+    [
+      '<span class="kw">async def</span> extract(doc):',
+      '  <span class="cm"># ~92% accuracy</span>',
+      '  raw = <span class="kw">await</span> llm.run(doc)',
+      '  <span class="kw">return</span> Parsed(raw)'
+    ],
+    [
+      '<span class="kw">class</span> Signal(BaseModel):',
+      '  symbol: str',
+      '  confidence: <span class="kw">float</span>',
+      '  <span class="cm"># edge &gt;= 0.62</span>'
+    ],
+    [
+      '<span class="kw">@router.post</span>(<span class="cm">"/run"</span>)',
+      '<span class="kw">async def</span> run(job):',
+      '  <span class="kw">await</span> redis.set(key,',
+      '    result, ex=3600)'
+    ]
+  ];
+
+  var TYPE_MS = 22, LINE_PAUSE = 90, HOLD_MS = 1300, DEL_MS = 130, NEXT_MS = 500;
+  function sleep(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+
+  function makeLine(){
+    var row = document.createElement('div');
+    return row;
+  }
+
+  async function typeLine(row, html, cursor){
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    var full = tmp.textContent;
+    for (var i = 0; i < full.length; i++){
+      row.textContent = full.slice(0, i+1);
+      row.appendChild(cursor);
+      await sleep(TYPE_MS);
+    }
+    row.innerHTML = html;
+    row.appendChild(cursor);
+  }
+
+  async function runSnippet(lines){
+    body.innerHTML = '';
+    var cursor = document.createElement('span');
+    cursor.className = 'bt-cursor';
+    var rows = [];
+    for (var i = 0; i < lines.length; i++){
+      var row = makeLine();
+      body.appendChild(row);
+      rows.push(row);
+      await typeLine(row, lines[i], cursor);
+      await sleep(LINE_PAUSE);
+    }
+    cursor.remove();
+    await sleep(HOLD_MS);
+    for (var j = 0; j < rows.length; j++){
+      if (body.firstChild) body.firstChild.remove();
+      await sleep(DEL_MS);
+    }
+    await sleep(NEXT_MS);
+  }
+
+  async function loop(){
+    var i = 0;
+    while (true){
+      await runSnippet(SNIPPETS[i % SNIPPETS.length]);
+      i++;
+    }
+  }
+
+  loop();
+})();
+</script>
 
 </body>
 </html>
